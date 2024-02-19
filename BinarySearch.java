@@ -13,8 +13,18 @@ public class BinarySearch implements SearchInterface {
 		int mid = 0;
 		int high = listOfNumbers.length-1;
 		
-		while (high >= low) {
+		while (low <= high) {
 			mid = (high + low)/2;
+			if(target == listOfNumbers[mid]) {
+				return mid;
+			}
+			else if(target > listOfNumbers[mid]) {
+				
+				low = mid + 1;
+			}
+			else {
+				high = mid - 1;
+			}
 			
 			
 			

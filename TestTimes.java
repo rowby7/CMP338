@@ -47,19 +47,20 @@ public class TestTimes implements TestTimesInterface{
 
 	@Override
 	public void addTestTime(long testTime) {
-		
-		
-		if (testTimeCount < MAX_TEST_TIMES) {
+	    if (testTime < 0) {
+	        System.out.println("Error: Test time cannot be negative.");
+	        return;
+	    }
+	    
+	    if (testTimeCount < MAX_TEST_TIMES) {
 	        testTimes[testTimeCount] = testTime;
 	        testTimeCount++;
 	    } else {
-	   
 	        for (int i = 0; i < MAX_TEST_TIMES - 1; i++) {
 	            testTimes[i] = testTimes[i + 1];
 	        }
 	        testTimes[MAX_TEST_TIMES - 1] = testTime;
 	    }
-		
 	}
 
 	
@@ -68,11 +69,11 @@ public class TestTimes implements TestTimesInterface{
 	    if (testTimeCount == 0) {
 	        return 0;
 	    }
-	    long sum = 0;
+	    double sum = 0;
 	    for (int i = 0; i < testTimeCount; i++) {
 	        sum += testTimes[i];
 	    }
-	    return (double) sum / testTimeCount;
+	    return sum / testTimeCount;
 	}
 
 }
